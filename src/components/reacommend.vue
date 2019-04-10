@@ -2,23 +2,24 @@
   <div class="reacommend" ref="reacommend">
     <div class="reacommend-content" >
       <div class="swiper-container">
-        <div class="slider-wrapper">
+        <!-- //因为是异步的，要确保我拿到reacomments才能实行mouter -->
+        <div v-if="reacomments.length"  class="slider-wrapper">
           <div class="swiper-slide" >
-            <ul>
-              <li  v-for="(img,index) in reacomments" v-show="index===mark"  :key="index.cardTypeName">
+            <slider>
+              <div  v-for="(img,index) in reacomments" v-show="index===mark"  :key="index.cardTypeName">
                 <a :href="img.linkUrl">
                   <img :src="img.picUrl" style="max-width: 100%;">
                 </a>
 
-              </li>
-            </ul>
+              </div>
+            </slider>
           </div>
           <div class="radio-list">
             <h1 class="list-title">电台推荐</h1>
             <ul class="item-list">
               <li v-for="items in RadioList" class="items">
                 <div class="icons" style="padding: 0 10px">
-                  <img :src="items.picUrl"width="100%" >
+                  <img :src="items.picUrl" width="100%" >
                   <h2 class="names">{{items.Ftitle}}</h2>
                 </div>
               </li>
@@ -53,8 +54,8 @@
 <script>
   import {getReacommend,getDiscList} from '../api/reacommend'
   import {ERR_OK} from '../api/config'
-  import Slider from '../base/slider'
-  import  Swiper  from 'swiper'
+  import Slider from '@/base/slider'
+  //import  Swiper  from 'swiper'
 
   export default{
     data() {

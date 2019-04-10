@@ -1,5 +1,7 @@
 /**
  * Created by huangyuening on 2018/11/10.
+ * 获取数据的方法
+ *
  */
 import  jsonp from '../js/jsonp'
 import {commonParams, options} from './config'
@@ -15,6 +17,8 @@ export  function  getReacommend() {
     needNewCode: 1
 
   })
+  //返回promise对象
+
   return jsonp(url,data,options)
 
 }
